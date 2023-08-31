@@ -37,31 +37,33 @@ const Page = () => {
   const [name, setName] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const onload = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get("/api/profile");
-      const data = res.data;
-      setLoading(false);
-      if (data.success) {
-        setName(data.data.username);
-      }
-      if (!data.success) {
-        router.push("/login");
-      }
-      if (data.success == true) {
-        toast.success(data.message);
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const onload = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const res = await axios.get("/api/profile");
+  //     const data = res.data;
+  //     setLoading(false);
+  //     if (data.success) {
+  //       setName(data.data.username);
+  //     }
+  //     if (!data.success) {
+  //       router.push("/login");
+  //     }
+  //     if (data.success == true) {
+  //       toast.success(data.message);
+  //     } else {
+  //       toast.error(data.message);
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   useEffect(() => {
-    onload();
+    axios.get("/api/profile").then(res=>res.data).then(data=>{if (data.success) {
+      setName(data.data.username);}
+    })
 },[]);
   const deleteHandler =  async(id) =>{
     try {
