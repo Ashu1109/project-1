@@ -11,7 +11,7 @@ const Header = () => {
     document.getElementById('links').classList.toggle('blocking')
   }
   return (<>
-    <div className='hidden h-16 w-full bg-indigo-500 md:flex justify-between items-center'>
+    <div className='hidden h-16 w-full bg-indigo-300 md:flex justify-between items-center'>
       <div className=' hidden md:block ml-8'>
         <Link className='text-2xl' href={'/'}>ToDo.</Link>
       </div>
