@@ -62,7 +62,6 @@ const Page = () => {
   };
   useEffect(() => {
     onload();
-// eslint-disable-next-line react-hooks/exhaustive-deps
 },[]);
   const deleteHandler =  async(id) =>{
     try {
