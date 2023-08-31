@@ -6,13 +6,13 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 export const LogoutBtn = () => {
   const route = useRouter()
-const [token,setToken] = useContext(Context);
+const [token,setToken] = useContext(Context);console.log(token);
   const logoutHandler = async () => {
     try {
       const res = await fetch("/api/logout");
 
       const data = await res.json();
-      setToken(undefined)
+      setToken("")
       route.push('/');
       if (!data.success) toast.error(data.message);
 
@@ -21,7 +21,7 @@ const [token,setToken] = useContext(Context);
       return toast.error(error.message);
     }
   };
-    return (<>{token==undefined?<a className='p-4 text-xl hover:text-indigo-100' href={"/login"}>Login</a>:<button onClick={logoutHandler}  className='p-4 text-xl hover:text-indigo-100'>Logout</button>}</>)
+    return (<>{token==""?<a className='p-2 text-xl hover:text-indigo-100' href={"/login"}>Login</a>:<button onClick={logoutHandler}  className='p-2 text-xl hover:text-indigo-100'>Logout</button>}</>)
 }
 
 

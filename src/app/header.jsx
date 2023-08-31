@@ -60,18 +60,18 @@ const Header = () => {
           </div>
           <div id="onclicking" className="hidden ">
             <div id="links" className="">
-              <Link className="p-4 text-xl hover:text-indigo-100" href={"/"}>
+              <Link className="p-2 text-xl hover:text-indigo-100" href={"/"}>
                 Home
               </Link>
               <Link
-                className="p-4 text-xl hover:text-indigo-100"
+                className="p-2 text-xl hover:text-indigo-100"
                 href={"/profile"}
               >
                 Profile
               </Link>
               <LogoutBtn />
               <Link
-                className="p-4 text-xl hover:text-indigo-100"
+                className="p-2 text-xl hover:text-indigo-100"
                 href={"/signup"}
               >
                 Signup
