@@ -1,0 +1,13 @@
+.active{
+    height:150px !important;
+    transition: .2s ease-in;
+    align-items: flex-start !important;
+    padding: 2rem;
+  }
+  .blocking{
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    top: 10%;
+    left:15%;
+  }
