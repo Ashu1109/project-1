@@ -62,7 +62,7 @@ const Page = () => {
   // };
   useEffect(() => {
     axios.get("/api/profile").then(res=>res.data).then(data=>{if (data.success) {
-      setName(data.data.username);}
+      console.log(data.data.username);setName(data.data.username)}
     })
 },[]);
   const deleteHandler =  async(id) =>{
