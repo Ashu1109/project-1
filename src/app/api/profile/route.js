@@ -10,7 +10,7 @@ export async function GET(request) {
         const decodedToken = jwt.verify(token,process.env.JWT_SECRET);
         const userId =await  decodedToken.id;
         const user = await User.findOne({"_id":userId}).select("-password");
-        return NextResponse.json({message:`Welcome ${user.username}`,success:true,data:user},{status:200})
+        return NextResponse.json({success:true,data:user},{status:200})
     } catch (error) {
         return NextResponse.json({error:error.message,success:false},{status:500})
     }

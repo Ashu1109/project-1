@@ -66,11 +66,13 @@ const Page = () => {
       .then((res) => res.data)
       .then((data) => {
         if (data.success) {
-          console.log(data.data.username);
           setName(data.data.username);
         }
           if (data.redirect) {
             router.push("/login");
+          }
+          else{
+            router.push("/profile");
           }
           if (data.success == true) {
             toast.success(data.message);
@@ -149,7 +151,7 @@ const Page = () => {
                       onClick={() => {
                         deleteHandler(item._id);
                       }}
-                      className="p-4 text-lg bg-slate-100 rounded"
+                      className="p-3 text-lg bg-slate-100 rounded"
                     >
                       Delete
                     </button>
