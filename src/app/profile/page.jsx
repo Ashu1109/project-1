@@ -61,29 +61,44 @@ const Page = () => {
   //   }
   // };
   useEffect(() => {
-    axios.get("/api/profile").then(res=>res.data).then(data=>{if (data.success) {
-      console.log(data.data.username);setName(data.data.username)}
-    })
-},[]);
-  const deleteHandler =  async(id) =>{
+    axios
+      .get("/api/profile")
+      .then((res) => res.data)
+      .then((data) => {
+        if (data.success) {
+          console.log(data.data.username);
+          setName(data.data.username);
+        }
+          if (data.redirect) {
+            router.push("/login");
+          }
+          if (data.success == true) {
+            toast.success(data.message);
+          } else {
+            toast.error(data.message);
+          }
+        // onload();
+      }, []);
+  });
+  const deleteHandler = async (id) => {
     try {
       setLoading(true);
-      const res = await axios.delete(`/api/task?id=${id}`)
+      const res = await axios.delete(`/api/task?id=${id}`);
       const data = res.data;
       axios
         .get("/api/addTask")
         .then((res) => res.data)
         .then((data) => setTaskArray(data.userTask));
-        router.refresh();
+      router.refresh();
       setLoading(false);
-      if(!data.success) return toast.error(data.message)
-      toast.success(data.message)
+      if (!data.success) return toast.error(data.message);
+      toast.success(data.message);
     } catch (error) {
-      return toast.error(error)
-    }finally{
+      return toast.error(error);
+    } finally {
       setLoading(false);
     }
-  }
+  };
   return loading ? (
     <Loading />
   ) : (

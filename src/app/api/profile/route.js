@@ -6,7 +6,7 @@ connect();
 export async function GET(request) {
     try {
         const token = request.cookies.get("token")?.value || "";
-        if(token=="") return NextResponse.json({message:"Login First",success:false},{status:200})
+        if(token=="") return NextResponse.json({message:"Login First",success:false,redirect:true},{status:200})
         const decodedToken = jwt.verify(token,process.env.JWT_SECRET);
         const userId =await  decodedToken.id;
         const user = await User.findOne({"_id":userId}).select("-password");
