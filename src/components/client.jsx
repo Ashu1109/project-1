@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { Context } from "../Context/TokenContext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Link from "next/link";
 export const LogoutBtn = () => {
   const route = useRouter()
 const [token,setToken] = useContext(Context);console.log(token);
@@ -12,7 +13,7 @@ const [token,setToken] = useContext(Context);console.log(token);
       const res = await fetch("/api/logout");
 
       const data = await res.json();
-      setToken("")
+      setToken("");
       route.push('/');
       if (!data.success) toast.error(data.message);
 
@@ -21,7 +22,7 @@ const [token,setToken] = useContext(Context);console.log(token);
       return toast.error(error.message);
     }
   };
-    return (<>{token==""?<a className='p-2 text-xl hover:text-indigo-100' href={"/login"}>Login</a>:<button onClick={logoutHandler}  className='p-2 text-xl hover:text-indigo-100'>Logout</button>}</>)
+    return (<>{token==undefined?<Link className='p-2 text-xl hover:text-indigo-100' href={"/login"}>Login</Link>:<button onClick={logoutHandler}  className='p-2 text-xl hover:text-indigo-100'>Logout</button>}</>)
 }
 
 

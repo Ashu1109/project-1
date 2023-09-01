@@ -10,6 +10,7 @@ export async function POST(request){
         const {title,description} = await request.json();
         if(!title || !description) return NextResponse.json({message:"Enter All field",success:true},{status:200});
         const token = request.cookies.get("token")?.value||"";
+        if(token=="") return NextResponse.json({message:"Login First",success:false,redirect:true},{status:200})
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
         const userId = await decoded.id;
 

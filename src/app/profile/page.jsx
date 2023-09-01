@@ -1,10 +1,9 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Loading from "../loading";
 import { toast } from "react-toastify";
-import { TodoItem } from "../../components/server";
 const Page = () => {
   const [taskArray, setTaskArray] = useState([]);
   const route = useRouter();
@@ -16,7 +15,10 @@ const Page = () => {
     axios
       .get("/api/addTask")
       .then((res) => res.data)
-      .then((data) => setTaskArray(data.userTask));
+      .then((data) => setTaskArray(data.userTask))
+      .catch((err) => {
+        console.log("done")
+      });
   }, []);
   const addTask = async () => {
     try {
@@ -26,7 +28,10 @@ const Page = () => {
       axios
         .get("/api/addTask")
         .then((res) => res.data)
-        .then((data) => setTaskArray(data.userTask));
+        .then((data) => setTaskArray(data.userTask))
+        .catch((err) => {
+          console.log(err.message);
+        });
       route.refresh();
       setLoading(false);
       return toast.success(data.message);
@@ -60,6 +65,7 @@ const Page = () => {
   //     setLoading(false);
   //   }
   // };
+
   useEffect(() => {
     axios
       .get("/api/profile")
@@ -68,20 +74,22 @@ const Page = () => {
         if (data.success) {
           setName(data.data.username);
         }
-          if (data.redirect) {
-            router.push("/login");
-          }
-          else{
-            router.push("/profile");
-          }
-          if (data.success == true) {
-            toast.success(data.message);
-          } else {
-            toast.error(data.message);
-          }
+        if (!data.success) {
+          router.push("/login");
+        }
+        if (data.success == true) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.message);
+        }
         // onload();
-      }, []);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      }),
+      [];
   });
+
   const deleteHandler = async (id) => {
     try {
       setLoading(true);
