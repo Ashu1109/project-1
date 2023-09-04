@@ -3,10 +3,11 @@ export function middleware(request) {
   const path = request.nextUrl.pathname; 
   const isPublic = path == '/login' || path == '/signup' || path=='/';
   const token = request.cookies.get("token")?.value || "";
+  console.log(token);
   if(token && isPublic){
     return NextResponse.redirect(new URL('/profile', request.nextUrl));
   }
-  if (!isPublic && !token) {
+  if (!token && !isPublic) {
     return NextResponse.redirect(new URL('/login', request.nextUrl));
   }
 }
