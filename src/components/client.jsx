@@ -7,13 +7,13 @@ import axios from "axios";
 import Link from "next/link";
 export const LogoutBtn = () => {
   const route = useRouter()
-const [token,setToken] = useContext(Context);console.log(token);
+const [token,setToken] = useContext(Context);
   const logoutHandler = async () => {
     try {
       const res = await fetch("/api/logout");
 
       const data = await res.json();
-      setToken("");
+      setToken(undefined);
       route.push('/');
       if (!data.success) toast.error(data.message);
 
