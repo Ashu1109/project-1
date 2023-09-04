@@ -19,7 +19,6 @@ const Profile = () => {
             setLoading(true)
             const res = await axios.post("api/login",user);
             const data = res.data;
-            setLoading(false);
             axios.get('/api/me').then(res=>res.data).then(data=>setToken(data.token));
             if(data.success==true){
                 toast.success(data.message)
@@ -27,6 +26,7 @@ const Profile = () => {
             else{
                 toast.error(data.message)
             }
+            setLoading(false);
             router.push("/profile");
         } catch (error) {
             toast.error(error.message)
