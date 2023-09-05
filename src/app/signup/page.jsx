@@ -34,8 +34,8 @@ const OnSignUp = () => {
         }
     }
     return (loading?<Loading />:
-        <div className=' bg-indigo-100 flex flex-col min-h-screen pt-10 md:justify-center items-center justify-start'>
-            <div className='h-3/4 w-72 md:w-1/2  rounded-xl flex flex-col items-center justify-center bg-indigo-300'>
+        <div className=' bg-indigo-100 flex flex-col h-[92vh] pt-10 md:justify-center items-center justify-start'>
+            <div className=' h-3/5 w-72 md:w-1/2  rounded-xl flex flex-col items-center justify-center bg-indigo-300'>
                 <div className='mt-4 text-3xl mb-5 font-serif'>Sign Up</div>
                 <label className='m-0.5 text-lg' htmlFor="username">UserName</label>
                 <input placeholder='Enter Your Name' onChange={(e)=>{setUser({...user,username:e.target.value})}} value={user.username} className='m-0.5 rounded p-2 text-black focus:outline-slate-300 ' id='username' type="text" />

@@ -35,7 +35,7 @@ const Profile = () => {
         }
     }
     return (loading?<Loading />:
-        <div className='flex bg-indigo-100 flex-col min-h-screen items-center pt-10 justify-start md:justify-center'>
+        <div className='flex bg-indigo-100 flex-col h-[92vh] items-center pt-10 justify-start md:justify-center'>
             <div className=' max-h-full w-72  md:w-1/2 rounded-xl flex flex-col items-center justify-center bg-indigo-300'>
                 <div className='mt-4 text-3xl mb-6 font-serif'>Login</div>
                 <label className='m-0.5 text-xl' htmlFor="email">Email</label>

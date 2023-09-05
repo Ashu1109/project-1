@@ -22,7 +22,7 @@ const [token,setToken] = useContext(Context);
       return toast.error(error.message);
     } 
   };
-    return (<>{token==undefined?<Link className='p-2 text-xl hover:text-indigo-100' href={"/login"}>Login</Link>:<button onClick={logoutHandler}  className='p-2 text-xl hover:text-indigo-100'>Logout</button>}</>)
+    return (<>{token==undefined?<Link className='p-2 md:text-xl text-2xl md:hover:text-indigo-100' href={"/login"}>Login</Link>:<button onClick={logoutHandler}  className='p-2 md:text-xl text-2xl md:hover:text-indigo-100'>Logout</button>}</>)
 }
 
 

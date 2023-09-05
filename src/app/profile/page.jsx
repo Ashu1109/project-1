@@ -112,7 +112,7 @@ const Page = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div className="flex min-h-screen flex-col bg-indigo-100">
+    <div className="flex h-[80vh] flex-col bg-indigo-100">
       <div className="flex flex-col justify-end items-start">
         <div className="text-xl m-3">Welcome - {name}</div>
       </div>

@@ -1,13 +1,14 @@
 .active{
-    height:150px !important;
-    transition: .2s ease-in;
-    align-items: flex-start !important;
-    padding: 2rem;
-  }
-  .blocking{
-    display: flex;
-    align-items: flex-start;
-    position: absolute;
-    top: 10%;
-    left:10%;
-  }
+  transform: translateY(24.2rem);
+}
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+
+.done{
+  transform: translateX(12rem);
+  display: none !important;
+}
