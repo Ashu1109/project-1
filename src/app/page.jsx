@@ -2,6 +2,7 @@ import Image from 'next/image'
 import img from '../../public/pngwing.com.png'
 import Link from 'next/link'
 export default function Home() {
+
   return (<>
     <main id='mainpage' className=" bg-indigo-100 flex flex-col h-[92vh] justify-start  items-center">
       <p className=" mt-12 text-3xl">WELCOME</p>

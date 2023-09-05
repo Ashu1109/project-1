@@ -4,7 +4,8 @@ import Link from "next/link";
 import { LogoutBtn } from "../components/client";
 import "./app.css";
 const Header = () => {
-  const onClick = () => {
+  
+  const handleClick = () => {
     document.getElementById("toggle")?.classList.toggle("done");
     document.getElementById("arrow")?.classList.toggle("hide");
     document.getElementById("arrow")?.classList.add("show");
@@ -12,9 +13,9 @@ const Header = () => {
     document.getElementById("burger")?.classList.toggle("hide");
   };
   return (
-    <div className=" h-16 w-full bg-indigo-300 flex justify-between items-center">
+    <div  className=" h-16 w-full bg-indigo-300 flex justify-between items-center">
       <div className=" ml-8">
-        <Link className="text-2xl" href={"/"}>
+        <Link  className="text-2xl" href={"/"}>
           ToDo.
         </Link>
       </div>
@@ -31,8 +32,8 @@ const Header = () => {
         </Link>
       </div>
       <div
-        onClick={onClick}
-        className="md:hidden absolute z-20 top-4 right-4 block"
+        onClick={handleClick}
+        className="md:hidden transition-transform absolute z-20 top-4 right-4 block"
       >
         <div id="arrow" className="hide">
           <svg
@@ -74,28 +75,28 @@ const Header = () => {
         <main className=" flex min-h-screen flex-col pt-32 justify-start items-center w-full ">
           <div className="w-full h-[77vh] flex flex-col text-2xl  items-center justify-start">
             <Link
-              onClick={onClick}
+              onClick={handleClick}
               className="m-5 w-11/12 hover:bg-indigo-400 bg-indigo-300 shadow-lg shadow-indigo-300  transition h-12 rounded-2xl items-center justify-center flex "
               href={"/"}
             >
               Home
             </Link>
             <Link
-              onClick={onClick}
+              onClick={handleClick}
               className="m-5 w-11/12 hover:bg-indigo-400 bg-indigo-300 shadow-lg shadow-indigo-300  transition h-12 rounded-2xl items-center justify-center flex "
               href={"/profile"}
             >
               Profile
             </Link>
             <Link
-              onClick={onClick}
+              onClick={handleClick}
               className="m-5 w-11/12 hover:bg-indigo-400 bg-indigo-300 shadow-lg shadow-indigo-300  transition  h-12 rounded-2xl items-center justify-center flex "
               href={"/"}
             >
               <LogoutBtn />
             </Link>
             <Link
-              onClick={onClick}
+              onClick={handleClick}
               className="m-5 w-11/12 hover:bg-indigo-400 bg-indigo-300 shadow-lg shadow-indigo-300  transition  h-12 rounded-2xl items-center justify-center flex "
               href={"/signup"}
             >
